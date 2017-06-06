@@ -1,5 +1,7 @@
 #!/bin/sh -x
 
+. /opt/rh/rh-python35/enable
+
 TOKEN=`cat /run/secrets/kubernetes.io/serviceaccount/token`
 PHASE=${PHASE:-Added}
 PROJECT=$1
