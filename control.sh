@@ -26,9 +26,9 @@ Added | Updated | Sync )
 
   ## request certificate
   certbot run -d $DOMAIN \
-          --config-dir=/etc/letscencrypt \
-          --work-dir=/var/lib/letscencrypt \
-          --logs-dir=/var/log/letscencrypt \
+          --config-dir=/etc/letsencrypt \
+          --work-dir=/var/lib/letsencrypt \
+          --logs-dir=/var/log/letsencrypt \
           --non-interactive \
           -m $EMAIL \
           --agree-tos \
