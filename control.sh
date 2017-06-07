@@ -1,5 +1,6 @@
 #!/bin/sh -x
 
+. /opt/app-root/etc/generate_container_user
 . /opt/rh/rh-python35/enable
 
 cat /etc/pki/tls/certs/ca-bundle.trust.crt /run/secrets/kubernetes.io/serviceaccount/ca.crt >/tmp/ca-bundle.crt
@@ -19,6 +20,7 @@ case $PHASE in
 Added | Updated | Sync )
   ## replace route with temp route to certbot
   oc -n $PROJECT export route/$ROUTE >/tmp/route.old.yaml
+  oc -n $PROJECT delete route/$ROUTE
   oc expose pod/$HOSTNAME
   oc expose svc/$HOSTNAME --hostname=$DOMAIN
 
